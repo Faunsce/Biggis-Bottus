@@ -1,15 +1,22 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
 require('dotenv').config();
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.login(process.env.DISCORD_TOKEN);
+
+client.once('ready', () => {
+  console.log(`Logged in as ${process.env.DISCORD_TOKEN}!`);
 });
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('pong');
+  if (msg.content.charAt(0) != ("~")) return;
+  
+  msg.content = msg.content.slice(1);
+  
+  if (msg.content === "pang") {
+    msg.reply('bang');
   }
 });
 
-client.login('token');
+client.login(process.env.DISCORD_TOKEN);
