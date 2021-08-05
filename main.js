@@ -10,14 +10,22 @@ client.once('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content.charAt(0) != ("~")) return;
-  
-  msg.content = msg.content.slice(1);
 
-  if (msg.content === "pang") {
-    msg.reply('bang');
+  
+  if (msg.channel.id === "872707443333947443") {
+    client.channels.cache.get('487508530727747595').send("[Jah] <" + msg.content + ">");
   } else {
-    msg.reply('This command does not exist!');
+    if (msg.content.charAt(0) != ("~")) return;
+  
+    msg.content = msg.content.slice(1);
+
+    if (msg.content === "pang") {
+      msg.reply('bang');
+    } else if (msg.content === "bing") {
+      msg.channel.send("bong");
+    }else {
+      msg.reply('This command does not exist!');
+    }
   }
 });
 
