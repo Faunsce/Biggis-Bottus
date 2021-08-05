@@ -13,9 +13,11 @@ client.on('message', msg => {
   if (msg.content.charAt(0) != ("~")) return;
   
   msg.content = msg.content.slice(1);
-  
+
   if (msg.content === "pang") {
     msg.reply('bang');
+  } else {
+    msg.reply('This command does not exist!');
   }
 });
 
