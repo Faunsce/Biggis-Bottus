@@ -1,0 +1,22 @@
+{
+  "name": "biggis-bottus",
+  "version": "1.0.0",
+  "description": "A bog standard discord bot",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Faunsce/Biggis-Bottus.git"
+  },
+  "author": "Dominik Rutter (Faunsce)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Faunsce/Biggis-Bottus/issues"
+  },
+  "homepage": "https://github.com/Faunsce/Biggis-Bottus#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
