@@ -9,22 +9,29 @@ client.once('ready', () => {
   console.log(`Logged in as ${process.env.DISCORD_TOKEN}!`);
 });
 
+let code = '0000';
+
 client.on('message', msg => {
 
-  
-  if (msg.channel.id === "872707443333947443") {
-    client.channels.cache.get('487508530727747595').send("[Jah] <" + msg.content + ">");
-  } else {
-    if (msg.content.charAt(0) != ("~")) return;
-  
-    msg.content = msg.content.slice(1);
-
-    if (msg.content === "pang") {
-      msg.reply('bang');
-    } else if (msg.content === "bing") {
-      msg.channel.send("bong");
-    }else {
-      msg.reply('This command does not exist!');
+  if (msg.channel.type == 'dm' && msg.author.id != 872689458166792203) {
+    if( msg.author.id == 218919106504556545) {
+      if (msg.content.startsWith('!set ')) {
+        code = msg.content.substring(5);
+        msg.reply('Code now set to : [' + code + ']');
+      } else {
+        msg.reply("Please set the code using `!set 0000`");
+      }
+    } else {
+      msg.reply('Insufficient Permissions');
+    }
+  } else if (msg.author.id != 872689458166792203) {
+    if (msg.member.roles.cache.find(role => role.name === "New Hazzy's") || msg.member.roles.cache.find(role => role.name === "That One Streamer")) {
+      if (msg.content == '!raid') {
+        msg.channel.send('@everyone')
+        for (var i = 0; i < 4; i++) {
+          msg.channel.send('LOCKER CODE : ' + code);
+        }
+      }
     }
   }
 });
