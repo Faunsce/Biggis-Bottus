@@ -21,7 +21,7 @@ fs.readFile('code.txt', 'utf8', (err, data) => {
   console.log(code);
 })
 
-let officers = '852066806599647233';
+let officers = '897190590855397411';
 let officer_commands = new Map();
 
 officer_commands.set('!set', function(msg){
@@ -40,33 +40,33 @@ officer_commands.set('!get', function(msg){
 });
 
 
-let hazzys = '821081071520317540';
-let hazzy_commands = new Map();
+let members = '897190590855397409';
+let member_commands = new Map();
 
-hazzy_commands.set('!raid', function(msg){
-  msg.channel.send('@everyone');
+member_commands.set('!raid', function(msg){
+  msg.channel.send('@everyone , @' + msg.author.tag + ' has sounded the alarm!');
   for (var i = 0; i < 4; i++) {
     msg.channel.send('LOCKER CODE : ' + code);
   }
 });
 
-hazzy_commands.set('!flex', function(msg){
+member_commands.set('!flex', function(msg){
   let flexes = [
-    '#HZGONTOP',
-    'Cope harder kid, absolute baboon mentality. I will stay winning, you will stay losing #HZGONTOP',
+    '',
+    'Cope harder kid, absolute baboon mentality. I will stay winning, you will stay losing ',
     'MAKING..MY...WAY...THROUGH...THE...ROAMS...SIPPING..THIS..YAK...NIGGAS...BOUT...TO...GET...CLAPPED',
     'CALL….US….CURFEW…BECAUSE…..WE…..SENDING…. YOU…. BACK…TO…YOUR….BED',
     'RADIATION DETECTED \
     LOCATION: YOUR LOOTROOM \
     RESPONSE: HAZMATS DEPLOYED',
-    'Sit...Down...And...Drink...Your...Sippy...Cups...Because...We\'re...Making...Children...Of...Men...#HZGONTOP',
-    'Your.....Base.....Boutta.....Blow.....Up.....Like.....Chernobyl #HZGONTOP'
+    'Sit...Down...And...Drink...Your...Sippy...Cups...Because...We\'re...Making...Children...Of...Men...',
+    'Your.....Base.....Boutta.....Blow.....Up.....Like.....Chernobyl'
   ]
-  msg.channel.send(flexes[Math.floor(Math.random() * flexes.length)]);
+  msg.channel.send(flexes[Math.floor(Math.random() * flexes.length)] + '#LONGLIVETHEMPIRE');
 })
 
-hazzy_commands.set('!cope', function(msg){
-  msg.channel.send('Cope harder kid, absolute baboon mentality. I will stay winning, you will stay losing #HZGONTOP');
+member_commands.set('!kukke', function(msg){
+  msg.channel.send('Oh, did you mean NN?');
 })
 
 client.on('message', msg => {
@@ -81,13 +81,13 @@ client.on('message', msg => {
       }
     }
     console.log("COMMAND IS " + command);
-    if (msg.member.roles.cache.get(hazzys)) {
-      console.log("has hazzys");
-      if (hazzy_commands.has(command)) {
+    if (msg.author.id == '218919106504556545' || msg.member.roles.cache.get(members)) {
+      console.log("has membership");
+      if (member_commands.has(command)) {
         console.log("command exists");
-        hazzy_commands.get(command)(msg);
+        member_commands.get(command)(msg);
         return;
-      } else if (msg.member.roles.cache.get(officers)) {
+      } else if (msg.author.id == '218919106504556545' || msg.member.roles.cache.get(officers)) {
         console.log("has officer");
         if (officer_commands.has(command)) {
           officer_commands.get(command)(msg);
